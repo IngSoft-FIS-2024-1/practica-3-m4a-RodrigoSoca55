@@ -12,12 +12,12 @@ class Library {
   }
 
   setName(name) {
-    if (typeof (name) !== "string") {
-      throw new Error()
+    if (typeof (name) !== 'string') {
+      throw new Error();
     }
     name = name.trim();
     if (name.length === 0) {
-      throw new Error()
+      throw new Error();
     }
     this.#name = name;
   }
@@ -40,7 +40,11 @@ class Library {
   }
 
   totalWords() {
-    // TODO
+    let totalWords = 0;
+    for(let i = 0 ; i< this.#inventory.length;i++){
+      totalWords = totalWords + this.#inventory[i].getWords();
+    }
+    return totalWords;
   }
 }
 

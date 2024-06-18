@@ -33,5 +33,24 @@ describe('Library', () => {
   it('throw an error when setting an empty name', () => {
     // TODO
   });
+  it('retorno la cantidad de palabras  de los libros de la   biblioteca',()=>{
+    
+    myLibrary.addBook('Cuentos de la selca ', 'Horacio Quiroga', 10);
+    myLibrary.addBook('Cuentos de la selnam ', 'Horacio Quiroga', 10);
+    myLibrary.addBook('Cuentos de la asd', 'Horacio Quiroga', 10);
+    
+    const myBook  = myLibrary.getInventory()[0];
+    const myBook2  = myLibrary.getInventory()[1];
+    const myBook3  = myLibrary.getInventory()[2];
+
+    myBook.setWords(100);
+    myBook2.setWords(200);
+
+    myBook3.setWords(500);
+
+
+    const words =  myBook.getWords() + myBook2.getWords() + myBook3.getWords();
+    expect( myLibrary.totalWords()).toBe(words);
+  });
 
 });

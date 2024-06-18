@@ -43,4 +43,24 @@ describe('Book', () => {
     // TODO
   });
 
+  it('retorno del promedio de paginas por libro',()=>{
+    myBook = new Book('Cuentos de la Selva', 'Horacio Quiroga', 350);
+    myBook.setWords(3500);
+    const prom =  3500/350;
+    expect( myBook.wordsPerPage()).toBe(prom);
+  });
+  it('retorno del promedio de paginas por libro',()=>{
+    myBook = new Book('Cuentos de la Selva', 'Horacio Quiroga', 1);
+    myBook.setWords(1);
+    const prom =  1/1;
+    expect( myBook.wordsPerPage()).toBe(prom);
+  });
+  it('retorno del promedio de paginas por libro',()=>{
+    myBook = new Book('Cuentos de la Selva', 'Horacio Quiroga', 10);
+    myBook.setWords(2);
+    const prom =  2/10;
+    expect( myBook.wordsPerPage()).toBe(prom);
+  });
+   
+
 });
