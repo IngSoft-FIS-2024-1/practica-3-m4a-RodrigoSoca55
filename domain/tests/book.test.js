@@ -29,18 +29,31 @@ describe('Book', () => {
   });
 
   it('check author is a string', () => {
-    // TODO
-  });
+    expect(() => myBook = new Book('horacio', 1, 350)).toThrow();
+    });
 
   it('check page param is a number', () => {
-    // TODO
+    const myBook = new Book('Cuentos de la Selva', 'Horacio Quiroga', 350, 3500);
+    expect(() => {
+      myBook.setPages('2');
+    }).toThrow(Error);
+  });
+  it('check page param is a number', () => {
+    const myBook = new Book('Cuentos de la Selva', 'Horacio Quiroga', 350, 3500);
+    expect(() => {
+      myBook.setPages('jamon');
+    }).toThrow(Error);
   });
 
   it('check pages not < 1', () => {
-    // TODO
-  });
+    const myBook = new Book('Cuentos de la Selva', 'Horacio Quiroga', 350, 3500);
+    expect(() => {
+      myBook.setPages(-1);
+    }).toThrow(Error);  });
   it('toString()', () => {
-    // TODO
+    myBook = new Book('Cuentos de la Selva', 'Horacio Quiroga', 350);
+    myBook.setWords(3500);
+    expect( myBook.toString()).toBe('Título: Cuentos de la Selva Autor: Horacio Quiroga Páginas: 350 Palabras:3500');
   });
 
   it('retorno del promedio de paginas por libro',()=>{
@@ -55,12 +68,50 @@ describe('Book', () => {
     const prom =  1/1;
     expect( myBook.wordsPerPage()).toBe(prom);
   });
+
   it('retorno del promedio de paginas por libro',()=>{
     myBook = new Book('Cuentos de la Selva', 'Horacio Quiroga', 10);
     myBook.setWords(2);
     const prom =  2/10;
     expect( myBook.wordsPerPage()).toBe(prom);
   });
+
+  it('retorno del autor si es anonimo de ',()=>{
+    myBook = new Book('Cuentos de la Selva', '', 10);
+    expect( myBook.getAuthor()).toBe('Anónimo');
+  });
    
+
+  it('retorno de setwords cuando no es un numero',()=>{
+    const myBook = new Book('Cuentos de la Selva', 'Horacio Quiroga', 350, 3500);
+    expect(() => {
+      myBook.setWords('hola');
+    }).toThrow(Error);
+
+  });
+  
+  it('retorno de setwords cuando no es un numero',()=>{
+    const myBook = new Book('Cuentos de la Selva', 'Horacio Quiroga', 350, 3500);
+    expect(() => {
+      myBook.setWords('1');
+    }).toThrow(Error);
+
+  });
+
+  it('retorno de setwords cuando es menor a 1 el numero',()=>{
+    const myBook = new Book('Cuentos de la Selva', 'Horacio Quiroga', 350, 3500);
+    expect(() => {
+      myBook.setWords(0);
+    }).toThrow(Error);
+
+  });
+  
+  it('retorno de setwords cuando es menor a 1 el numero',()=>{
+    const myBook = new Book('Cuentos de la Selva', 'Horacio Quiroga', 350, 3500);
+    expect(() => {
+      myBook.setWords(-1);
+    }).toThrow(Error);
+
+  });
 
 });

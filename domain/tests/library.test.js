@@ -31,8 +31,7 @@ describe('Library', () => {
     expect(() => myLibrary.setName(123)).toThrow();
   });
   it('throw an error when setting an empty name', () => {
-    // TODO
-  });
+    expect(() => myLibrary.setName('')).toThrow();  });
   it('retorno la cantidad de palabras  de los libros de la   biblioteca',()=>{
     
     myLibrary.addBook('Cuentos de la selca ', 'Horacio Quiroga', 10);
